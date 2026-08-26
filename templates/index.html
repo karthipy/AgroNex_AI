@@ -1,1 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AgroNex AI</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <h1>🌾 AgroNex AI</h1>
+        <p>Intelligent Crop Yield Prediction System</p>
+    </div>
+
+
+    <div class="form-card">
+
+        <!-- Prediction Form -->
+        <form action="/predict" method="POST">
+
+            <h2 class="section-title">🌱 Crop Details</h2>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Crop</label>
+                    <input type="text"
+                           name="Crop"
+                           placeholder="Example: Rice"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Soil Type</label>
+                    <input type="text"
+                           name="Soil_Type"
+                           placeholder="Example: Loamy"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Season</label>
+                    <input type="text"
+                           name="Season"
+                           placeholder="Example: Kharif"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Rainfall (mm)</label>
+                    <input type="number"
+                           name="Rainfall_mm"
+                           step="any"
+                           placeholder="Example: 850"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Temperature (°C)</label>
+                    <input type="number"
+                           name="Temperature_C"
+                           step="any"
+                           placeholder="Example: 28"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Humidity</label>
+                    <input type="number"
+                           name="Humidity"
+                           step="any"
+                           placeholder="Example: 70"
+                           required>
+                </div>
+
+            </div>
+
+
+            <h2 class="section-title">🚜 Farming Details</h2>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Fertilizer (kg)</label>
+                    <input type="number"
+                           name="Fertilizer_kg"
+                           step="any"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Irrigation (mm)</label>
+                    <input type="number"
+                           name="Irrigation_mm"
+                           step="any"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Water Availability</label>
+                    <input type="text"
+                           name="Water_Availability"
+                           placeholder="Example: High"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>NPK Ratio</label>
+                    <input type="number"
+                           name="NPK_Ratio"
+                           step="any"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Sunlight Hours</label>
+                    <input type="number"
+                           name="Sunlight_Hours"
+                           step="any"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Pesticide (kg)</label>
+                    <input type="number"
+                           name="Pesticide_kg"
+                           step="any"
+                           required>
+                </div>
+
+            </div>
+
+
+            <h2 class="section-title">🌾 Crop & Farm Information</h2>
+
+            <div class="form-grid">
+
+                <div class="input-group">
+                    <label>Seed Quality Score</label>
+                    <input type="number"
+                           name="Seed_Quality_Score"
+                           step="any"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Soil Moisture</label>
+                    <input type="number"
+                           name="Soil_Moisture"
+                           step="any"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Farming Method</label>
+                    <input type="text"
+                           name="Farming_Method"
+                           placeholder="Example: Organic"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Crop Disease Risk</label>
+                    <input type="text"
+                           name="Crop_Disease_Risk"
+                           placeholder="Example: Low"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Previous Yield (ton)</label>
+                    <input type="number"
+                           name="Previous_Yield_ton"
+                           step="any"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Labor Hours</label>
+                    <input type="number"
+                           name="Labor_Hours"
+                           step="any"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Area (acres)</label>
+                    <input type="number"
+                           name="Area_Acres"
+                           step="any"
+                           required>
+                </div>
+
+                <div class="input-group">
+                    <label>Market Price per ton</label>
+                    <input type="number"
+                           name="Market_Price_per_ton"
+                           step="any"
+                           required>
+                </div>
+
+            </div>
+
+
+            <!-- Predict Button -->
+
+            <button type="submit" class="predict-btn">
+                🌱 Predict Crop Yield
+            </button>
+
+
+            <!-- Prediction Result -->
+
+            {% if prediction is defined %}
+
+            <div class="result">
+
+                <h2>🌾 Prediction Result</h2>
+
+                <p>
+                    Predicted Crop Yield:
+                    <strong>{{ prediction }} ton/acre</strong>
+                </p>
+
+            </div>
+
+            {% endif %}
+
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
